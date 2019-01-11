@@ -39,9 +39,23 @@ getRandomPhraseAsArray = (phrases) => {
 
 addPhraseToDisplay = (selectedPhrase) => {
 
-	console.log("Hi");
-		 console.log(selectedPhrase);
-
+	for (let i = 0; i < selectedPhrase.length; i++) {
+		console.log(selectedPhrase[i]);
+		let li = document.createElement('li');
+		if (selectedPhrase[i] != " ") {
+			li.className = 'letter'
+			li.textContent = selectedPhrase[i];	
+			phrase.appendChild(li);
+		}else {
+			li.className = 'space'
+			li.textContent = selectedPhrase[i];	
+			phrase.appendChild(li);
+		}
+	}
 
 }
 
+
+checkLetter = () =>{
+
+}
