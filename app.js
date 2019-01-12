@@ -3,7 +3,6 @@ let overlay = document.querySelector('#overlay');
 const qwerty = document.getElementById('qwerty');
 let phrase = document.getElementById('phrase');
 let missed = 0;
-//let selectedPhrase;
 let phrases = [
 				'Wild Goose Chase',
 				'Off with his head',
@@ -25,7 +24,7 @@ reset.addEventListener('click', () => {
 
 getRandomPhraseAsArray = (phrases) => {
 	 let numOfphrases = phrases.length;
-	 let selectItem  = Math.floor(Math.random() * numOfphrases + 1);
+	 let selectItem  = Math.floor(Math.random() * numOfphrases);
 	 let phraseChosen = phrases[selectItem];
 	 let phraseLength = phraseChosen.length;
 	 let splitPhrase = [];
@@ -40,7 +39,7 @@ getRandomPhraseAsArray = (phrases) => {
 addPhraseToDisplay = (selectedPhrase) => {
 
 	for (let i = 0; i < selectedPhrase.length; i++) {
-		console.log(selectedPhrase[i]);
+		//console.log(selectedPhrase[i]);
 		let li = document.createElement('li');
 		if (selectedPhrase[i] != " ") {
 			li.className = 'letter'
@@ -55,7 +54,34 @@ addPhraseToDisplay = (selectedPhrase) => {
 
 }
 
+qwerty.addEventListener('click' ,  (event) =>{
 
-checkLetter = () =>{
+	let guessedLetter = event.target;
+	let point = 0;
+	selectedPhrase = document.querySelectorAll('.letter');
+	//let li = document.querySelectorAll('li');
+		//console.log(selectedPhrase.length);
 
-}
+	checkLetter = (guessedLetter) => {
+
+		for(let i = 0; i < selectedPhrase.length; i++){ 
+
+			let letterFound = selectedPhrase[i].textContent.toLowerCase();
+				
+			if (letterFound === guessedLetter.textContent){
+				selectedPhrase[i].className = 'show';
+				guessedLetter.className = 'chosen'
+
+			} else {
+				guessedLetter.className = 'chosen';
+			
+			}
+
+		}
+
+	}
+
+	
+	checkLetter(guessedLetter);
+
+});
