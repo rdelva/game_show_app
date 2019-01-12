@@ -70,11 +70,12 @@ qwerty.addEventListener('click' ,  (event) =>{
 				
 			if (letterFound === guessedLetter.textContent){
 				selectedPhrase[i].className = 'show';
-				guessedLetter.className = 'chosen'
+				guessedLetter.className = 'chosen';
 
 			} else {
 				guessedLetter.className = 'chosen';
-			
+				return null;
+
 			}
 
 		}
