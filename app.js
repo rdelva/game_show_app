@@ -55,34 +55,32 @@ addPhraseToDisplay = (selectedPhrase) => {
 }
 
 qwerty.addEventListener('click' ,  (event) =>{
-let letterFound = true
+let letterFound = true;
+//console.log(letterFound);
 	let guessedLetter = event.target;
 	let point = 0;
 	selectedPhrase = document.querySelectorAll('.letter');
-	//let li = document.querySelectorAll('li');
-		//console.log(selectedPhrase.length);
+	
 
 	checkLetter = (guessedLetter) => {
 
-			; 
+			
 		for(let i = 0; i < selectedPhrase.length; i++){ 
 
 			letterFound = selectedPhrase[i].textContent.toLowerCase();
 				console.log(letterFound);
 
 				
-			if (letterFound === guessedLetter.textContent){
+			if (letterFound == guessedLetter.textContent){
 				selectedPhrase[i].className = 'show';
 				guessedLetter.className = 'chosen';
-				guessedLetter.setAttribute('disabled', 'true');
-				
-				
+				//guessedLetter.setAttribute('disabled', 'true');				
 				
 
 			} else {
 				guessedLetter.className = 'chosen ';
 				guessedLetter.setAttribute('disabled', 'true');
-				letterFound = null;
+				letterFound = 'boo';
 				
 			}
 
@@ -94,14 +92,14 @@ let letterFound = true
 	}
 
 	
-	 letterFound = checkLetter(guessedLetter);
+	 let letterFound2 = checkLetter(guessedLetter);
 
-	console.log(letterFound);
+	console.log(letterFound2);
 
 
 
 	const tries = document.querySelectorAll('.tries');
-	if (letterFound === null){
+	if (letterFound2 === null){
 		missed++;
 		tries[missed].style.display = 'none';
 
