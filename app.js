@@ -55,8 +55,7 @@ addPhraseToDisplay = (selectedPhrase) => {
 }
 
 qwerty.addEventListener('click' ,  (event) =>{
-let letterFound = true;
-//console.log(letterFound);
+
 	let guessedLetter = event.target;
 	let point = 0;
 	selectedPhrase = document.querySelectorAll('.letter');
@@ -64,37 +63,38 @@ let letterFound = true;
 
 	checkLetter = (guessedLetter) => {
 
+
 			
 		for(let i = 0; i < selectedPhrase.length; i++){ 
 
-			letterFound = selectedPhrase[i].textContent.toLowerCase();
-				console.log(letterFound);
+			let selectedLetter = selectedPhrase[i].textContent.toLowerCase();
+			
 
 				
-			if (letterFound == guessedLetter.textContent){
+			if (selectedLetter == guessedLetter.textContent){
 				selectedPhrase[i].className = 'show';
 				guessedLetter.className = 'chosen';
-				//guessedLetter.setAttribute('disabled', 'true');				
+				guessedLetter.setAttribute('disabled', 'true');				
 				
 
 			} else {
 				guessedLetter.className = 'chosen ';
 				guessedLetter.setAttribute('disabled', 'true');
-				letterFound = 'boo';
+				letterFound = null;
+				console.log("letter not found");
 				
 			}
 
 
 		}
 
-		return  letterFound;
+		return  letterFound; 
 	
-	}
+	}// end of checkedLetter
 
 	
 	 let letterFound2 = checkLetter(guessedLetter);
 
-	console.log(letterFound2);
 
 
 
