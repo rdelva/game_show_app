@@ -62,7 +62,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 	
 
 	checkLetter = (guessedLetter) => {
-
+			let letterFound ="";
 
 			
 		for(let i = 0; i < selectedPhrase.length; i++){ 
@@ -74,14 +74,20 @@ qwerty.addEventListener('click' ,  (event) =>{
 			if (selectedLetter == guessedLetter.textContent){
 				selectedPhrase[i].className = 'show';
 				guessedLetter.className = 'chosen';
-				guessedLetter.setAttribute('disabled', 'true');				
+				guessedLetter.setAttribute('disabled', 'true');	
+				letterFound = guessedLetter;
+				console.log("result" + letterFound);
+							
 				
 
 			} else {
 				guessedLetter.className = 'chosen ';
 				guessedLetter.setAttribute('disabled', 'true');
-				letterFound = null;
-				console.log("letter not found");
+
+				
+						 letterFound = null;
+						console.log("letter not found");
+				
 				
 			}
 
