@@ -90,7 +90,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 		
 				if (i == selectedPhrase.length) {
 				letterFound = null;
-				console.log("else statment letter not found ");
+				//console.log("else statment letter not found ");
 				
 				}
 			}
@@ -109,10 +109,13 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 
 	const tries = document.querySelectorAll('.tries');
-	if (letterFound2 == null && missed <= 6 ){
+
+	console.log(tries.length);
+	if (letterFound2 == null && missed <= tries.length + 1 ){
 		
 			missed++;
 			console.log(missed);
+			console.log(tries[missed]);
 				tries[missed].style.display = 'none';
 
 
