@@ -87,12 +87,12 @@ qwerty.addEventListener('click' ,  (event) =>{
 			} else {
 				guessedLetter.className = 'chosen ';
 				guessedLetter.setAttribute('disabled', 'true');
-
+		
+				if (i == selectedPhrase.length) {
+				letterFound = null;
+				console.log("else statment letter not found ");
 				
-						 letterFound = null;
-						console.log("letter not found");
-				
-				
+				}
 			}
 
 
@@ -109,11 +109,15 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 
 	const tries = document.querySelectorAll('.tries');
-	if (letterFound2 === null){
-		missed++;
-		tries[missed].style.display = 'none';
+	if (letterFound2 == null && missed <= 6 ){
+		
+			missed++;
+			console.log(missed);
+				tries[missed].style.display = 'none';
+
 
 	}
 
+	
 
 });
