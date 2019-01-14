@@ -66,7 +66,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 	
 
 	checkLetter = (guessedLetter) => {
-			let letterFound ="";
+			let letterFound =null;
 
 			
 		for(let i = 0; i < selectedPhrase.length; i++){ 
