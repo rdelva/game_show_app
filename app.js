@@ -2,6 +2,8 @@ const reset= document.querySelector('.btn__reset');
 let overlay = document.querySelector('#overlay');
 const qwerty = document.getElementById('qwerty');
 let phrase = document.getElementById('phrase');
+let ul = phrase.querySelector('ul');
+
 let missed = 0;
 let phrases = [
 				'Wild Goose Chase',
@@ -39,20 +41,20 @@ getRandomPhraseAsArray = (phrases) => {
 addPhraseToDisplay = (selectedPhrase) => {
 
 	for (let i = 0; i < selectedPhrase.length; i++) {
-		//console.log(selectedPhrase[i]);
+		
 		let li = document.createElement('li');
 		if (selectedPhrase[i] != " ") {
 			li.className = 'letter'
 			li.textContent = selectedPhrase[i];	
-			phrase.appendChild(li);
+			ul.appendChild(li);
 		}else {
 			li.className = 'space'
 			li.textContent = selectedPhrase[i];	
-			phrase.appendChild(li);
+			ul.appendChild(li);
 		}
 	}
 
-}
+}// addPhraseToDisplay
 
 qwerty.addEventListener('click' ,  (event) =>{
 		let guessedLetter;
@@ -126,9 +128,12 @@ qwerty.addEventListener('click' ,  (event) =>{
 			overlay.append(button);
 						
 			button.addEventListener('click', () => {
+
+				missed = 0;
+				ul.removeChildren();
 				
 			});
-;
+
 
 			overlay.style.display = 'block';
 
