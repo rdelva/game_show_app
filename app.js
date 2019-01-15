@@ -59,11 +59,10 @@ qwerty.addEventListener('click' ,  (event) =>{
 	
 		if (event.target.tagName == 'BUTTON') {
 				 guessedLetter = event.target;
+				 
 		}
 
-	let point = 0;
-	selectedPhrase = document.querySelectorAll('.letter');
-	
+	selectedPhrase = document.querySelectorAll('.letter');	
 
 	checkLetter = (guessedLetter) => {
 			let letterFound =null;
@@ -76,22 +75,19 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 				
 			if (selectedLetter == guessedLetter.textContent){
-				selectedPhrase[i].className = 'show';
+				selectedPhrase[i].className = 'show letter';
 				guessedLetter.className = 'chosen';
 				guessedLetter.setAttribute('disabled', 'true');	
 				letterFound = guessedLetter;
-				console.log("result" + letterFound);
 							
 				
 
 			} else {
 				guessedLetter.className = 'chosen ';
 				guessedLetter.setAttribute('disabled', 'true');
-		
 				if (i == selectedPhrase.length) {
 				letterFound = null;
-				//console.log("else statment letter not found ");
-				
+	
 				}
 			}
 
@@ -104,23 +100,57 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 	
 	 let letterFound2 = checkLetter(guessedLetter);
-
-
-
-
-	const tries = document.querySelectorAll('.tries');
-
-	console.log(tries.length);
-	if (letterFound2 == null && missed <= tries.length + 1 ){
-		
+	const tries = document.querySelectorAll('.tries');	
+	if (letterFound2 == null && missed <= tries.length ){ 		
+			tries[missed].style.display = 'none';
 			missed++;
-			console.log(missed);
-			console.log(tries[missed]);
-				tries[missed].style.display = 'none';
-
 
 	}
 
 	
 
+	checkWin = () => {
+		let show = document.querySelectorAll('.show');
+		let letter = document.querySelectorAll('.letter');
+		console.log(show.length + " " + letter.length);
+
+
+		if( show.length == letter.length) { 
+
+			let h3 = document.createElement('h3');
+			h3.textContent = 'Congratuations you\'ve won!';
+			overlay.append(h3);
+
+			let button = document.createElement('button');
+			button.textContent = 'Sucess! Start Again'
+			overlay.append(button);
+						
+			button.addEventListener('click', () => {
+				
+			});
+;
+
+			overlay.style.display = 'block';
+
+
+		} else if (missed == 5){
+			let h3 = document.createElement('h3');
+			h3.textContent = 'You lose!'
+			overlay.append(h3);
+
+			let button = document.createElement('button');
+			button.textContent = 'Failure! Start Again'
+			overlay.append(button); 
+			overlay.style.display = 'block';
+
+			button.addEventListener('click', () => {
+				
+			});
+
+
+		}
+
+
+	}
+	checkWin();
 });
