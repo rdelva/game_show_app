@@ -159,34 +159,20 @@ qwerty.addEventListener('click' ,  (event) =>{
 	resetGame = () => {
 		missed = 0;
 		const tries = document.querySelectorAll('.tries');
-		let letter = document.querySelectorAll('.letter');
-		let li = document.querySelectorAll('li');
-		let chosen = document.querySelectorAll('chosen');;
+		let chosen = document.querySelectorAll('.chosen');
 
-		const ul = letter.parentNode;
-		console.log(letter.length);
-		
-		for (let i = 0; i > letter.length; i--){
-			ul.removeChild(li[i]);
-		}
-	
 		// to display the hearts	
 		for (let i = 0; i < tries.length; i++){
 			tries[i].style.display = 'inline-block';
-
 		}
 
-		//remove disables and chosen classes
-
+		//remove disables and chosen classes 
 		for (let i=0; i < chosen.length; i++ ){
-
 			chosen[i].removeAttribute('class');	
-
+			chosen[i].removeAttribute('disabled'); 
 		}
 		
 		overlay.style.display = 'none';
-
-
 	}
 
 
