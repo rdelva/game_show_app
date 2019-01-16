@@ -47,7 +47,7 @@ addPhraseToDisplay = (selectedPhrase) => {
 			li.className = 'letter'
 			li.textContent = selectedPhrase[i];	
 			ul.appendChild(li);
-		} else {
+		}else {
 			li.className = 'space'
 			li.textContent = selectedPhrase[i];	
 			ul.appendChild(li);
@@ -161,12 +161,11 @@ qwerty.addEventListener('click' ,  (event) =>{
 		const tries = document.querySelectorAll('.tries');
 		let chosen = document.querySelectorAll('.chosen');
 		let ul = document.querySelectorAll('ul');
-		console.log(ul);
 		 let phraseBox = ul.parentNode;
 		 console.log(phraseBox);
 		 phraseBox.removeChild(ul);
 		  let list  = document.createElement(ul);
-		 phraseBox.appendChild(list);
+		 phraseBox.appendChild(ul);
 		 console.log(phraseBox);
 
 		// to display the hearts	
