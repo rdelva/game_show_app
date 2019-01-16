@@ -109,13 +109,9 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 	}
 
-	
-
 	checkWin = () => {
 		let show = document.querySelectorAll('.show');
 		let letter = document.querySelectorAll('.letter');
-		console.log(show.length + " " + letter.length);
-
 
 		if( show.length == letter.length) { 
 
@@ -126,16 +122,15 @@ qwerty.addEventListener('click' ,  (event) =>{
 			let button = document.createElement('button');
 			button.textContent = 'Sucess! Start Again'
 			overlay.append(button);
+			overlay.style.display = 'block';
+
 						
 			button.addEventListener('click', () => {
 
-				missed = 0;
-				ul.removeChildren();
-				
+				resetGame(); 				
 			});
 
 
-			overlay.style.display = 'block';
 
 
 		} else if (missed == 5){
@@ -149,7 +144,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 			overlay.style.display = 'block';
 
 			button.addEventListener('click', () => {
-				
+				resetGame();				
 			});
 
 
@@ -158,4 +153,42 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 	}
 	checkWin();
+
+
+
+	resetGame = () => {
+		missed = 0;
+		const tries = document.querySelectorAll('.tries');
+		let letter = document.querySelectorAll('.letter');
+		let li = document.querySelectorAll('li');
+		let chosen = document.querySelectorAll('chosen');;
+
+		const ul = letter.parentNode;
+		console.log(letter.length);
+		
+		for (let i = 0; i > letter.length; i--){
+			ul.removeChild(li[i]);
+		}
+	
+		// to display the hearts	
+		for (let i = 0; i < tries.length; i++){
+			tries[i].style.display = 'inline-block';
+
+		}
+
+		//remove disables and chosen classes
+
+		for (let i=0; i < chosen.length; i++ ){
+
+			chosen[i].removeAttribute('class');	
+
+		}
+		
+		overlay.style.display = 'none';
+
+
+	}
+
+
+
 });
