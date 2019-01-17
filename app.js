@@ -157,16 +157,17 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 
 	resetGame = () => {
-		missed = 0;
+		
 		const tries = document.querySelectorAll('.tries');
 		let chosen = document.querySelectorAll('.chosen');
-		let ul = document.querySelectorAll('ul');
-		 let phraseBox = ul.parentNode;
-		 console.log(phraseBox);
-		 phraseBox.removeChild(ul);
-		  let list  = document.createElement(ul);
-		 phraseBox.appendChild(ul);
-		 console.log(phraseBox);
+		let ul = document.querySelector('ul');		
+		let phrase = ul.parentNode;
+		console.log(phrase);
+		phrase.removeChild(ul);
+		ul = document.createElement('ul');
+		phrase.appendChild(ul);
+		
+
 
 		// to display the hearts	
 		for (let i = 0; i < tries.length; i++){
@@ -180,6 +181,11 @@ qwerty.addEventListener('click' ,  (event) =>{
 		}
 		
 		overlay.style.display = 'none';
+		let selectedPhrase = getRandomPhraseAsArray(phrases);
+		console.log(selectedPhrase);
+		addPhraseToDisplay(selectedPhrase);
+		missed = 0;
+
 	}
 
 
