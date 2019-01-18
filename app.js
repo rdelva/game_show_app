@@ -25,8 +25,9 @@ reset.addEventListener('click', () => {
 
 
 getRandomPhraseAsArray = (phrases) => {
-	 let numOfphrases = phrases.length;
-	 let selectItem  = Math.floor(Math.random() * numOfphrases);
+	 let numOfphrases = phrases.length - 1;
+	 console.log("Number of Phrases" + numOfphrases); // to account from 0 up to the max
+	 let selectItem  = Math.floor(Math.random() * (numOfphrases - 0) + 0);
 	 let phraseChosen = phrases[selectItem];
 	 let phraseLength = phraseChosen.length;
 	 let splitPhrase = [];
@@ -44,11 +45,11 @@ addPhraseToDisplay = (selectedPhrase) => {
 		
 		let li = document.createElement('li');
 		if (selectedPhrase[i] != " ") {
-			li.className = 'letter'
+			li.className = 'letter';
 			li.textContent = selectedPhrase[i];	
 			ul.appendChild(li);
 		}else {
-			li.className = 'space'
+			li.className = 'space';
 			li.textContent = selectedPhrase[i];	
 			ul.appendChild(li);
 		}
@@ -120,7 +121,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 			overlay.append(h3);
 
 			let button = document.createElement('button');
-			button.textContent = 'Sucess! Start Again'
+			button.textContent = 'Sucess! Start Again';
 			overlay.append(button);
 			overlay.style.display = 'block';
 
@@ -138,11 +139,11 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 		} else if (missed == 5){
 			let h3 = document.createElement('h3');
-			h3.textContent = 'You lose!'
+			h3.textContent = 'You lose!';
 			overlay.append(h3);
 
 			let button = document.createElement('button');
-			button.textContent = 'Failure! Start Again'
+			button.textContent = 'Failure! Start Again';
 			overlay.append(button); 
 			overlay.style.display = 'block';
 
