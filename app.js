@@ -25,9 +25,9 @@ reset.addEventListener('click', () => {
 
 
 getRandomPhraseAsArray = (phrases) => {
-	 let numOfphrases = phrases.length - 1;
-	 console.log("Number of Phrases" + numOfphrases); // to account from 0 up to the max
-	 let selectItem  = Math.floor(Math.random() * (numOfphrases - 0) + 0);
+	 let numOfphrases = phrases.length; 
+	 let selectItem  = Math.floor(Math.random() * numOfphrases ); 
+	 console.log(selectItem);
 	 let phraseChosen = phrases[selectItem];
 	 let phraseLength = phraseChosen.length;
 	 let splitPhrase = [];
