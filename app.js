@@ -17,14 +17,13 @@ let phrases = [
 reset.addEventListener('click', () => {
 	
 	overlay.style.display ='none';
-	let selectedPhrase = getRandomPhraseAsArray(phrases);
-	addPhraseToDisplay(selectedPhrase);
+	//let selectedPhrase = getRandomPhraseAsArray(phrases);
+	//addPhraseToDisplay(selectedPhrase);
 
 });
 
 
-
-getRandomPhraseAsArray = (phrases) => {
+let getRandomPhraseAsArray = (phrases) => {
 	 let numOfphrases = phrases.length; 
 	 let selectItem  = Math.floor(Math.random() * numOfphrases ); 
 	 console.log(selectItem);
@@ -38,8 +37,10 @@ getRandomPhraseAsArray = (phrases) => {
 	 return splitPhrase;
 }
 
+let selectedPhrase = getRandomPhraseAsArray(phrases);
 
-addPhraseToDisplay = (selectedPhrase) => {
+
+let addPhraseToDisplay = (selectedPhrase) => {
 
 	for (let i = 0; i < selectedPhrase.length; i++) {
 		
@@ -56,6 +57,8 @@ addPhraseToDisplay = (selectedPhrase) => {
 	}
 
 }// addPhraseToDisplay
+
+
 
 qwerty.addEventListener('click' ,  (event) =>{
 		let guessedLetter;
@@ -110,7 +113,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 	}
 
-	checkWin = () => {
+	let checkWin = () => {
 		let show = document.querySelectorAll('.show');
 		let letter = document.querySelectorAll('.letter');
 
@@ -163,7 +166,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 
 
-	resetGame = () => {
+	let resetGame = () => {
 		
 		const tries = document.querySelectorAll('.tries');
 		let chosen = document.querySelectorAll('.chosen');
