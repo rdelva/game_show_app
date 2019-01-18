@@ -64,7 +64,6 @@ qwerty.addEventListener('click' ,  (event) =>{
 	
 		if (event.target.tagName == 'BUTTON') {
 				 guessedLetter = event.target;
-				 console.log(guessedLetter);
 				 
 		}
 
@@ -122,7 +121,9 @@ qwerty.addEventListener('click' ,  (event) =>{
 			let h3 = document.createElement('h3');
 			h3.textContent = 'Congratuations you\'ve won!';
 			overlay.append(h3);
-
+			let overlay2 = reset.parentNode;
+			console.log(overlay2);
+			overlay2.removeChild(reset);
 			let button = document.createElement('button');
 			button.textContent = 'Sucess! Start Again';
 			overlay.append(button);
@@ -142,8 +143,12 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 		} else if (missed == 5){
 			let h3 = document.createElement('h3');
+			let overlay2 = reset.parentNode;
+			console.log(overlay2);
+			overlay2.removeChild(reset);
 			h3.textContent = 'You lose!';
 			overlay.append(h3);
+
 
 			let button = document.createElement('button');
 			button.textContent = 'Failure! Start Again';
