@@ -1,4 +1,4 @@
-const reset= document.querySelector('.btn__reset');
+const reset = document.querySelector('.btn__reset');
 let overlay = document.querySelector('#overlay');
 const qwerty = document.getElementById('qwerty');
 let phrase = document.getElementById('phrase');
@@ -127,7 +127,10 @@ qwerty.addEventListener('click' ,  (event) =>{
 						
 			button.addEventListener('click', () => {
 
-				resetGame(); 				
+				resetGame(); 
+				let selectedPhrase = getRandomPhraseAsArray(phrases);
+				console.log(selectedPhrase);
+				addPhraseToDisplay(selectedPhrase);				
 			});
 
 
@@ -144,7 +147,10 @@ qwerty.addEventListener('click' ,  (event) =>{
 			overlay.style.display = 'block';
 
 			button.addEventListener('click', () => {
-				resetGame();				
+				resetGame();	
+				let selectedPhrase = getRandomPhraseAsArray(phrases);
+		console.log(selectedPhrase);
+		addPhraseToDisplay(selectedPhrase);			
 			});
 
 
@@ -181,9 +187,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 		}
 		
 		overlay.style.display = 'none';
-		let selectedPhrase = getRandomPhraseAsArray(phrases);
-		console.log(selectedPhrase);
-		addPhraseToDisplay(selectedPhrase);
+		
 		missed = 0;
 
 	}
