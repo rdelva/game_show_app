@@ -13,7 +13,7 @@ let phrases = [
 				'Off with his head',
 				'Love is Blind',
 				'All you need is love',
-				'Carpe diem'
+				'Carpe Diem'
 				 ];
 
 
@@ -61,9 +61,8 @@ const addPhraseToDisplay = (selectedPhrase) => {
 
 addPhraseToDisplay(selectedPhrase);
 
-qwerty.addEventListener('click' ,  (event) =>{
+qwerty.addEventListener('click', (event) => {
 		let guessedLetter;
-	
 		if (event.target.tagName == 'BUTTON') {
 				 guessedLetter = event.target;
 				 
@@ -128,9 +127,11 @@ qwerty.addEventListener('click' ,  (event) =>{
 		if( show.length == letter.length) { 
 
 			setTimeout(function(){
+				overlay.removeAttribute('class');
+				overlay.className = 'win';
 				title.textContent = 'Congratuations you\'ve won!';
 				resetButton.style.display = 'inline-block';			
-				overlay.style.display = 'block';
+				overlay.style.display = 'flex';
 			},1000);
 			resetButton.addEventListener('click', () => {
  				resetGame(); 
@@ -139,9 +140,11 @@ qwerty.addEventListener('click' ,  (event) =>{
 		} else if (missed == 5){
 
 			setTimeout(function(){
+				overlay.removeAttribute('class');
+				overlay.className = 'lose';
 				title.textContent = 'Failure! You lose';
 				resetButton.style.display = 'inline-block';			
-				overlay.style.display = 'block';
+				overlay.style.display = 'flex';
 			},1000);			
 			resetButton.addEventListener('click', () => {
  				resetGame(); 
