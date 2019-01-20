@@ -3,7 +3,7 @@ let overlay = document.querySelector('#overlay');
 const qwerty = document.getElementById('qwerty');
 let phrase = document.getElementById('phrase');
 let ul = phrase.querySelector('ul');
-
+let title = document.querySelector('.title');
 let missed = 0;
 let phrases = [
 				'Wild Goose Chase',
@@ -112,35 +112,29 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 	}
 
+
 	const checkWin = () => {
 		let show = document.querySelectorAll('.show');
 		let letter = document.querySelectorAll('.letter');
+		console.log("Show" + show.length  + "  Letter" + letter.length);
 
 		if( show.length == letter.length) { 
 
-			let h3 = document.createElement('h3');
-			h3.textContent = 'Congratuations you\'ve won!';
-			overlay.append(h3);
-			let overlay2 = reset.parentNode;
-			console.log(overlay2);
-			overlay2.removeChild(reset);
+
+			//let h3 = document.createElement('h3');
+			title.textContent = 'Congratuations you\'ve won!';
+			/*overlay.append(h3);*/
+			overlay = reset.parentNode;
+			overlay.removeChild(reset); 
 			let button = document.createElement('button');
 			button.textContent = 'Sucess! Start Again';
 			overlay.append(button);
 			overlay.style.display = 'block';
-
-						
 			button.addEventListener('click', () => {
+ 				resetGame(); 
+ 				overlay.removeChild(button);
 
-				resetGame(); 
-				//let selectedPhrase = getRandomPhraseAsArray(phrases);
-				//console.log(selectedPhrase);
-				//addPhraseToDisplay(selectedPhrase);				
 			});
-
-
-
-
 		} else if (missed == 5){
 			let h3 = document.createElement('h3');
 			let overlay2 = reset.parentNode;
@@ -148,8 +142,6 @@ qwerty.addEventListener('click' ,  (event) =>{
 			overlay2.removeChild(reset);
 			h3.textContent = 'You lose!';
 			overlay.append(h3);
-
-
 			let button = document.createElement('button');
 			button.textContent = 'Failure! Start Again';
 			overlay.append(button); 
@@ -157,9 +149,8 @@ qwerty.addEventListener('click' ,  (event) =>{
 
 			button.addEventListener('click', () => {
 				resetGame();	
-				let selectedPhrase = getRandomPhraseAsArray(phrases);
-				console.log(selectedPhrase);
-				addPhraseToDisplay(selectedPhrase);			
+
+					
 			});
 
 
@@ -171,16 +162,13 @@ qwerty.addEventListener('click' ,  (event) =>{
 	
 
 	const resetGame = () => {
-		
 		const tries = document.querySelectorAll('.tries');
 		let chosen = document.querySelectorAll('.chosen');
-		let ul = document.querySelector('ul');		
-		let phrase = ul.parentNode;
-		console.log(phrase);
-		phrase.removeChild(ul);
-		ul = document.createElement('ul');
-		phrase.appendChild(ul);
-		
+		ul.innerHTML = "";	
+
+		let selectedPhrase = getRandomPhraseAsArray(phrases);
+		console.log(selectedPhrase);
+		addPhraseToDisplay(selectedPhrase);
 
 
 		// to display the hearts	
@@ -192,8 +180,7 @@ qwerty.addEventListener('click' ,  (event) =>{
 		for (let i=0; i < chosen.length; i++ ){
 			chosen[i].removeAttribute('class');	
 			chosen[i].removeAttribute('disabled'); 
-		}
-		
+		}		
 		overlay.style.display = 'none';
 		
 		missed = 0;
