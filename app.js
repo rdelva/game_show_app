@@ -142,7 +142,7 @@ qwerty.addEventListener('click', (event) => {
 			setTimeout(function(){
 				overlay.removeAttribute('class');
 				overlay.className = 'lose';
-				title.textContent = 'Failure! You lose';
+				title.textContent = 'Sorry! You lose';
 				resetButton.style.display = 'inline-block';			
 				overlay.style.display = 'flex';
 			},1000);			
