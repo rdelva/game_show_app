@@ -64,7 +64,9 @@ addPhraseToDisplay(selectedPhrase);
 qwerty.addEventListener('click', (event) => {
 		let guessedLetter;
 		if (event.target.tagName == 'BUTTON') {
+			console.log(event.target.tagName);
 				 guessedLetter = event.target;
+				 console.log("Guess Letter" + guessedLetter);
 				 
 		}
 
