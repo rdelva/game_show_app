@@ -63,6 +63,7 @@ addPhraseToDisplay(selectedPhrase);
 
 qwerty.addEventListener('click', (event) => {
 		let guessedLetter;
+		console.log(event.target);
 		if (event.target.tagName == 'BUTTON') {
 			console.log(event.target.tagName);
 				 guessedLetter = event.target;
@@ -77,6 +78,7 @@ qwerty.addEventListener('click', (event) => {
 		for(let i = 0; i < selectedPhrase.length; i++){ 
 
 			let selectedLetter = selectedPhrase[i].textContent.toLowerCase();
+			console.log(guessedLetter.textContent);
 			if (selectedLetter == guessedLetter.textContent){
 				selectedPhrase[i].className = 'show letter';
 				guessedLetter.className = 'chosen';
