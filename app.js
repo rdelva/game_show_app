@@ -70,7 +70,7 @@ for (let i = 0; i < keys.length; i++){
 	keys[i].addEventListener('click', (event) => {
 
 		if (event.target.tagName == 'BUTTON') {
-			console.log(event.target.tagName);
+			//console.log(event.target.tagName);
 				 guessedLetter = event.target;
 		}
 
@@ -81,7 +81,7 @@ for (let i = 0; i < keys.length; i++){
 		for(let i = 0; i < selectedPhrase.length; i++){ 
 
 			let selectedLetter = selectedPhrase[i].textContent.toLowerCase();
-			console.log(guessedLetter.textContent);
+			//console.log(guessedLetter.textContent);
 			if (selectedLetter == guessedLetter.textContent){
 				selectedPhrase[i].className = 'show letter';
 				guessedLetter.className = 'chosen';
