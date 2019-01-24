@@ -123,6 +123,7 @@ let letterFound2 = checkLetter(guessedLetter);
 
 	}
 
+
 	const gameRestart = () => {
 
 
