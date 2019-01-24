@@ -104,101 +104,95 @@ for (let i = 0; i < keys.length; i++){
 	
 		}// end of checkedLetter
 
-	});
+		let letterFound2 = checkLetter(guessedLetter);	
 
+		const tries = document.querySelectorAll('.tries');	
+
+		if (letterFound2 == null && missed <= tries.length ){ 		
+			tries[missed].style.display = 'none';
+			missed++;
+
+		}
+
+		const gameRestart = () => {
+
+			resetButton.textContent = 'Start Again';
+			overlay.append(resetButton);
+			resetButton.className = "resetButton btn__reset";
+			resetButton.style.display = 'none';
+		}
+		
+		gameRestart();
+
+		const checkWin = () => {
+			let show = document.querySelectorAll('.show');
+			let letter = document.querySelectorAll('.letter');
+			let resetButton = document.querySelector('.resetButton');
+
+			if( show.length == letter.length) { 
+
+				setTimeout(function(){
+					overlay.removeAttribute('class');
+					overlay.className = 'win';
+					title.textContent = 'Congratulations you\'ve won!';
+					resetButton.style.display = 'inline-block';			
+					overlay.style.display = 'flex';
+				},1000);
+				resetButton.addEventListener('click', () => {
+	 				resetGame(); 
+	 				resetButton.style.display = 'none';
+				});
+			} else if (missed == 5){
+
+				setTimeout(function(){
+					overlay.removeAttribute('class');
+					overlay.className = 'lose';
+					title.textContent = 'Sorry! You lose';
+					resetButton.style.display = 'inline-block';			
+					overlay.style.display = 'flex';
+				}, 800);			
+				resetButton.addEventListener('click', () => {
+	 				resetGame(); 
+	 				resetButton.style.display = 'none';
+				});
+			}
+
+
+			}// checkWin
+			
+			checkWin();
+	
+
+			const resetGame = () => {
+				const tries = document.querySelectorAll('.tries');
+				let chosen = document.querySelectorAll('.chosen');
+				ul.innerHTML = "";	
+
+				let selectedPhrase = getRandomPhraseAsArray(phrases);
+				addPhraseToDisplay(selectedPhrase);
+
+
+				// to display the hearts	
+				for (let i = 0; i < tries.length; i++){
+					tries[i].style.display = 'inline-block';
+				}
+
+				//remove disables and chosen classes 
+				for (let i=0; i < chosen.length; i++ ){
+					chosen[i].removeAttribute('class');	
+					chosen[i].removeAttribute('disabled'); 
+				}		
+				overlay.style.display = 'none';
+				
+				missed = 0;
+			}
+
+	});
 
 } // end of for loop for keyboard
 
 
-let letterFound2 = checkLetter(guessedLetter);	
-
-
-
-
-	const tries = document.querySelectorAll('.tries');	
-
-	if (letterFound2 == null && missed <= tries.length ){ 		
-			tries[missed].style.display = 'none';
-			missed++;
-
-	}
-
-
-	const gameRestart = () => {
-
-
-		resetButton.textContent = 'Start Again';
-		overlay.append(resetButton);
-		resetButton.className = "resetButton btn__reset";
-		resetButton.style.display = 'none';
-
-	}
-	gameRestart();
-
-	const checkWin = () => {
-		let show = document.querySelectorAll('.show');
-		let letter = document.querySelectorAll('.letter');
-		let resetButton = document.querySelector('.resetButton');
-
-		if( show.length == letter.length) { 
-
-			setTimeout(function(){
-				overlay.removeAttribute('class');
-				overlay.className = 'win';
-				title.textContent = 'Congratulations you\'ve won!';
-				resetButton.style.display = 'inline-block';			
-				overlay.style.display = 'flex';
-			},1000);
-			resetButton.addEventListener('click', () => {
- 				resetGame(); 
- 				resetButton.style.display = 'none';
-			});
-		} else if (missed == 5){
-
-			setTimeout(function(){
-				overlay.removeAttribute('class');
-				overlay.className = 'lose';
-				title.textContent = 'Sorry! You lose';
-				resetButton.style.display = 'inline-block';			
-				overlay.style.display = 'flex';
-			},1000);			
-			resetButton.addEventListener('click', () => {
- 				resetGame(); 
- 				resetButton.style.display = 'none';
-			});
-		}
-
-
-	}// checkWin
-	checkWin();
 	
-
-	const resetGame = () => {
-		const tries = document.querySelectorAll('.tries');
-		let chosen = document.querySelectorAll('.chosen');
-		ul.innerHTML = "";	
-
-		let selectedPhrase = getRandomPhraseAsArray(phrases);
-		addPhraseToDisplay(selectedPhrase);
-
-
-		// to display the hearts	
-		for (let i = 0; i < tries.length; i++){
-			tries[i].style.display = 'inline-block';
-		}
-
-		//remove disables and chosen classes 
-		for (let i=0; i < chosen.length; i++ ){
-			chosen[i].removeAttribute('class');	
-			chosen[i].removeAttribute('disabled'); 
-		}		
-		overlay.style.display = 'none';
-		
-		missed = 0;
-
-
-	}
-
 
 
 
