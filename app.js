@@ -1,11 +1,12 @@
 const startButton = document.querySelector('a');
 let overlay = document.querySelector('#overlay');
 const qwerty = document.getElementById('qwerty');
+const keys = qwerty.getElementsByTagName('button');
 let phrase = document.getElementById('phrase');
 let ul = phrase.querySelector('ul');
 let title = document.querySelector('.title');
 let resetButton = document.createElement('a');
-
+	
 
 let missed = 0;
 let phrases = [
@@ -50,7 +51,7 @@ const addPhraseToDisplay = (selectedPhrase) => {
 			li.className = 'letter';
 			li.textContent = selectedPhrase[i];	
 			ul.appendChild(li);
-		}else {
+		} else {
 			li.className = 'space';
 			li.textContent = selectedPhrase[i];	
 			ul.appendChild(li);
@@ -61,20 +62,22 @@ const addPhraseToDisplay = (selectedPhrase) => {
 
 addPhraseToDisplay(selectedPhrase);
 
-qwerty.addEventListener('click', (event) => {
-		let guessedLetter;
-		console.log(event.target);
+
+for (let i = 0; i < keys.length; i++){
+
+	let guessedLetter;
+
+	keys[i].addEventListener('click', (event) => {
+
 		if (event.target.tagName == 'BUTTON') {
 			console.log(event.target.tagName);
 				 guessedLetter = event.target;
-				 console.log("Guess Letter" + guessedLetter);
-				 
 		}
 
-	let selectedPhrase = document.querySelectorAll('.letter');
+		const checkLetter = (guessedLetter) => {
+		let letterFound = null;
+		let selectedPhrase = document.querySelectorAll('.letter');
 
-	const checkLetter = (guessedLetter) => {
-		let letterFound = null;	
 		for(let i = 0; i < selectedPhrase.length; i++){ 
 
 			let selectedLetter = selectedPhrase[i].textContent.toLowerCase();
@@ -95,17 +98,25 @@ qwerty.addEventListener('click', (event) => {
 	
 				}
 			}
-
-
 		}
 
 		return  letterFound; 
 	
-	}// end of checkedLetter
+		}// end of checkedLetter
 
-	
-	 let letterFound2 = checkLetter(guessedLetter);
+	});
+
+
+} // end of for loop for keyboard
+
+
+let letterFound2 = checkLetter(guessedLetter);	
+
+
+
+
 	const tries = document.querySelectorAll('.tries');	
+
 	if (letterFound2 == null && missed <= tries.length ){ 		
 			tries[missed].style.display = 'none';
 			missed++;
@@ -190,4 +201,7 @@ qwerty.addEventListener('click', (event) => {
 
 
 
-});
+
+
+
+
