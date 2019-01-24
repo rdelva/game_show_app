@@ -63,18 +63,18 @@ const addPhraseToDisplay = (selectedPhrase) => {
 addPhraseToDisplay(selectedPhrase);
 
 
-for (let i = 0; i < keys.length; i++){
-
+qwerty.addEventListener('click', (event) => {
 	let guessedLetter;
 
-	keys[i].addEventListener('click', (event) => {
-
-		if (event.target.tagName == 'BUTTON') {
+	if (event.target.tagName == 'BUTTON') {
 			//console.log(event.target.tagName);
 				 guessedLetter = event.target;
-		}
+	} else {
+			
+			return;
+	}
 
-		const checkLetter = (guessedLetter) => {
+	const checkLetter = (guessedLetter) => {
 		let letterFound = null;
 		let selectedPhrase = document.querySelectorAll('.letter');
 
@@ -101,30 +101,30 @@ for (let i = 0; i < keys.length; i++){
 		}
 
 		return  letterFound; 
-	
-		}// end of checkedLetter
-
-		let letterFound2 = checkLetter(guessedLetter);	
-
-		const tries = document.querySelectorAll('.tries');	
-
-		if (letterFound2 == null && missed <= tries.length ){ 		
-			tries[missed].style.display = 'none';
-			missed++;
-
-		}
-
-		const gameRestart = () => {
-
-			resetButton.textContent = 'Start Again';
-			overlay.append(resetButton);
-			resetButton.className = "resetButton btn__reset";
-			resetButton.style.display = 'none';
-		}
 		
-		gameRestart();
+	}// end of checkedLetter
 
-		const checkWin = () => {
+	let letterFound2 = checkLetter(guessedLetter);	
+
+	const tries = document.querySelectorAll('.tries');	
+
+	if (letterFound2 == null && missed <= tries.length ){ 		
+				tries[missed].style.display = 'none';
+				missed++;
+
+	}
+
+	const gameRestart = () => {
+
+		resetButton.textContent = 'Start Again';
+		overlay.append(resetButton);
+		resetButton.className = "resetButton btn__reset";
+		resetButton.style.display = 'none';
+	}
+			
+	gameRestart();
+
+	const checkWin = () => {
 			let show = document.querySelectorAll('.show');
 			let letter = document.querySelectorAll('.letter');
 			let resetButton = document.querySelector('.resetButton');
@@ -185,18 +185,6 @@ for (let i = 0; i < keys.length; i++){
 				overlay.style.display = 'none';
 				
 				missed = 0;
-			}
-
-	});
-
-} // end of for loop for keyboard
-
-
-	
-
-
-
-
-
-
+	}	
+});
 
